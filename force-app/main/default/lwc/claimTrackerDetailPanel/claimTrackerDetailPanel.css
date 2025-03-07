@@ -1,0 +1,49 @@
+.defaultContent{
+    margin:auto;
+    text-align:center;
+}
+
+.fieldSet{
+    margin:5%;
+    text-align:left;
+}
+
+.appealsPanel{
+    padding: 5%;
+    margin: 1%;
+    border-style: outset;
+    border-width: 2px;
+}
+
+.appealItem{
+    border-style: groove;
+    margin: 2%;
+    border-width: 2px;
+}
+
+.appeal-link {
+    display: inline-block;
+    padding: 3px 8px; 
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    text-decoration: none;
+    color: #000;
+}
+.appeal-link:hover {
+    background-color: #e0e0e0;
+}
+.claim-button {
+    padding: 10px 20px;
+}
+
+:host {
+    --sds-c-card-color-background: whitesmoke;
+}
+
+.claim-panel {
+    background-color: rgb(0, 95, 178);
+    color: whitesmoke;
+    border: none;
+    margin-bottom: 4px;
+    font-weight: 600;
+}

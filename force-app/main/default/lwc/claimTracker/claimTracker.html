@@ -1,0 +1,34 @@
+<template>  
+    <div class="claim-panel slds-tabs_card slds-theme_default">All Claims</div>
+    <lightning-card title={cardTitle} class="component-standard">
+            <template for:each={claimData} for:item="val">
+                <div key={val.claimRecId}>
+                    <div class={val.claimCssClass}>
+                        <lightning-tile>
+                            <lightning-layout>
+                                <lightning-layout-item class="claimLayoutItem" padding="small-around">
+                                    <lightning-icon icon-name="custom:custom45" size="6"></lightning-icon>
+                                </lightning-layout-item>
+                                <lightning-layout-item class="claimLayoutItem" flexibility="auto">
+                                    <p class="slds-text-align_center">{val.claimRecName} : {val.claimRecStatus}</p>
+                                </lightning-layout-item>
+                                <lightning-layout-item class="claimLayoutItem" onclick={onClaimClick} data-id={val.claimRecId}>
+                                    <lightning-icon icon-name={val.claimToggleIcon} size="6"></lightning-icon>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </lightning-tile>
+                    </div>
+                    <lightning-tile lwc:if={val.claimSlideOut}>
+                        <div class={val.claimSlideAnimation}>
+                            <p class="slideOut slideOutMask">{val.claimSlideOutText}</p>
+                        </div>
+                    </lightning-tile>
+                </div>
+                
+            </template>
+            <template lwc:if={myErrorMessage}>
+                <p>Error Message: {myErrorMessage}</p>
+            </template>
+    </lightning-card>
+
+</template>

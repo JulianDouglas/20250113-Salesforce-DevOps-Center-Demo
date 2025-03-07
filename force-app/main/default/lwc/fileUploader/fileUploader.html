@@ -1,0 +1,14 @@
+<template>
+    <div class="claim-panel slds-tabs_card slds-theme_default">Have additional documentation?</div>
+    <div class="component-standard slds-tabs_card slds-theme_default">
+        <b>Upload File</b>
+        <lightning-file-upload 
+            name="fileUploader"
+            accept={acceptedFormats}
+            record-id={myRecordId}
+            onuploadfinished={handleUploadFinished}
+            multiple
+        >
+        </lightning-file-upload>
+    </div>
+</template>

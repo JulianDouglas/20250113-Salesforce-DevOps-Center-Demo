@@ -1,0 +1,57 @@
+<template>
+    <div class="claim-panel slds-tabs_card slds-theme_default">Claim Details</div>
+    <template lwc:if={localClaimID}>
+            <lightning-card icon-name="custom:custom45" size="large" title={claimTileTitle}>
+                <lightning-button 
+                    variant="brand" 
+                    icon-name="standard:note" 
+                    label="View Claim" 
+                    slot="actions" 
+                    class="slds-m-left claim-button" 
+                    onclick={navigateToClaim}>
+                </lightning-button>
+                <div class="fieldSet">
+                    <div class="Field">
+                        <p>Status: {recordStatus}</p>
+                    </div>
+                    <div class="Field">
+                        <p>Claim Type: {recordType}</p>
+                    </div>
+                    <div class="Field">
+                        <p>Submitted On: <lightning-formatted-date-time value={recordCreatedDate}></lightning-formatted-date-time></p>
+                    </div>
+                </div>
+                <div class="appealsPanel">
+                    <h1>Claim Appeals</h1>
+                    <template lwc:if={displayAppeals}>
+                        <template for:each={claimAppeals} for:item="appeal">
+                            <div class="appealItem" key={appeal.fields.id}>
+                                <article class="slds-tile slds-tile_board slds-p-around_small">
+                                    <p>
+                                        <a href="#" onclick={navigateToAppeal} data-id={appeal.id} class="appeal-link">
+                                            Appeal #: {appeal.fields.CaseNumber.value} Status: {appeal.fields.Status.value}
+                                        </a>
+                                    </p>
+                                </article>
+                            </div>
+                        </template>
+                    </template>
+                    <template lwc:else>
+                        <h1>There are no appeals for this Claim</h1>
+                    </template>
+                </div>
+                <template lwc:if={errorMessage}>
+                    <lightning-tile>Error Message: {errorMessage}</lightning-tile>
+                </template>
+            </lightning-card>
+    </template>
+    <template lwc:else>
+            <lightning-card>
+                <div class="defaultContent">
+                    <lightning-icon icon-name="standard:note" size="large"></lightning-icon>
+                    <p>Select a Claim to see Details</p>
+                </div>
+            </lightning-card>
+    </template>
+
+</template>

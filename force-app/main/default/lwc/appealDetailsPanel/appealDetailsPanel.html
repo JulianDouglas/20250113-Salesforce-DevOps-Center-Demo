@@ -1,0 +1,29 @@
+<template> 
+    <div class="claim-panel slds-tabs_card slds-theme_default">Appeal: {recordId}</div>
+    <lightning-record-view-form object-api-name={objectName} record-id={recordId}>
+        <div class="component-standard slds-tabs_card slds-theme_default">
+            <b>Appeal Details</b>
+            <div class="slds-grid">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name={numberField}></lightning-output-field>
+                    <lightning-output-field field-name={claimField}></lightning-output-field>
+                    <lightning-output-field field-name={claimantField}></lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name={dateOpenedField}></lightning-output-field>
+                    <lightning-output-field field-name={dateClosedField}></lightning-output-field>
+                </div>
+            </div>
+            <b class="slds-p-top_medium">Additional Info</b>
+            <div class="slds-grid">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name={typeField}></lightning-output-field>
+                    <lightning-output-field field-name={justificationField}></lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name={statusField}></lightning-output-field>
+                </div>
+            </div>
+        </div>
+    </lightning-record-view-form>
+  </template>

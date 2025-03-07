@@ -1,0 +1,340 @@
+<template>
+    <div class="user-panel slds-tabs_card slds-theme_default">User Information</div>
+    <lightning-record-edit-form
+        object-api-name={objectName}
+        record-id={recordId}
+        onsuccess={handleSuccess}
+    >
+        <div class="slds-box slds-theme_default">
+
+            <div class="slds-grid" style="padding-bottom: 3rem;">
+                <template lwc:if={viewMode}>
+                    <div class="slds-col slds-size_4-of-12">
+                        <p>
+                            If you would like to update any of the personal information we have on file,
+                            here is where you can do that. Click the "Update Information" button to the
+                            right to start. When everything looks right, click "Confirm" below the form.
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_4-of-12"></div>
+                    <div class="slds-col slds-size_4-of-12">
+                        <lightning-button
+                            variant="brand"
+                            type="button"
+                            name="edit"
+                            label="Edit"
+                            onclick={toggleViewMode}>
+                        </lightning-button>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <div class="slds-col slds-size_4-of-12">
+                        <p>
+                            If you would like to reset your changes and stop editing, click
+                            the "Cancel" button to the right.
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_4-of-12"></div>
+                    <div class="slds-col slds-size_4-of-12">
+                        <lightning-button
+                            variant="brand-outline"
+                            type="button"
+                            name="cancel"
+                            label="Cancel"
+                            onclick={toggleViewMode}>
+                        </lightning-button>
+                    </div>
+                </template>
+            </div>
+
+            <lightning-menu-divider></lightning-menu-divider>
+
+            <lightning-messages></lightning-messages>
+
+            <b>Personal Info</b>
+            <div class="slds-grid" style="padding-top: 1rem;">
+                <div class="slds-col slds-size_5-of-12">
+                    
+                    <!-- Field: Account Name -->
+                    <template lwc:if={viewMode}>
+                        <lightning-input-field
+                            field-name={name}
+                            read-only>
+                        </lightning-input-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={name}
+                            required>
+                        </lightning-input-field>
+                    </template>
+
+                    <!-- Field: Housing Status -->
+                    <template lwc:if={viewMode}>
+                        <lightning-output-field
+                            field-name={housingStatus}>
+                        </lightning-output-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            field-name={housingStatus}
+                            onchange={handleFieldChange}>
+                        </lightning-input-field>
+                    </template>
+
+                </div>
+                <div class="slds-col slds-size_2-of-12"></div>
+                <div class="slds-col slds-size_5-of-12">
+
+                    <!-- Field: Phone -->
+                    <template lwc:if={viewMode}>
+                        <lightning-input-field
+                            field-name={phone}
+                            read-only>
+                        </lightning-input-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={phone}>
+                        </lightning-input-field>
+                    </template>
+
+                    <!-- Field: Social Security Number -->
+                    <div class="slds-form-element slds-grid" style="margin-top: -1rem;">
+                        <label class="slds-form-element__label slds-col slds-size_1-of-3 slds-align-middle" for="ssn">
+                            Social Security Number
+                        </label>
+                        <div class="slds-form-element__control slds-col slds-size_2-of-3">
+                            <lightning-input
+                                id="ssn"
+                                value={ssn}
+                                label-hidden
+                                read-only>
+                            </lightning-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <lightning-menu-divider></lightning-menu-divider>
+
+            <b>Benefits Info</b>
+            <div class="slds-grid" style="padding-top: 1rem;">
+                <div class="slds-col slds-size_5-of-12">
+
+                    <!-- Field: Current Disability Rating -->
+                    <lightning-input-field
+                        onchange={handleFieldChange}
+                        field-name={currentDisabilityRating}
+                        read-only>
+                    </lightning-input-field>
+
+                    <!-- Field: Permanently Disabled -->
+                    <lightning-output-field
+                        field-name={permanentlyDisabled}
+                        read-only>
+                    </lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_2-of-12"></div>
+                <div class="slds-col slds-size_5-of-12">
+
+                    <!-- Field: Monthly Social Security Payout -->
+                    <template lwc:if={viewMode}>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={monthlySocialSecurityPayout}
+                            read-only>
+                        </lightning-input-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={monthlySocialSecurityPayout}>
+                        </lightning-input-field>
+                    </template>
+
+                    <!-- Field: Monthly Disability Payout -->
+                    <template lwc:if={viewMode}>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={monthlyDisabilityPayout}
+                            read-only>
+                        </lightning-input-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={monthlyDisabilityPayout}>
+                        </lightning-input-field>
+                    </template>
+
+                    <!-- Field: Monthly Retirement Payout -->
+                    <template lwc:if={viewMode}>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={monthlyRetirementPayout}
+                            read-only>
+                        </lightning-input-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={monthlyRetirementPayout}>
+                        </lightning-input-field>
+                    </template>
+                </div>
+            </div>
+
+            <lightning-menu-divider></lightning-menu-divider>
+
+            <b>Income Info</b>
+            <div class="slds-grid" style="padding-top: 1rem;">
+                <div class="slds-col slds-size_5-of-12">
+
+                    <!-- Field: Primary Income Type -->
+                    <template lwc:if={viewMode}>
+                        <lightning-output-field
+                            field-name={primaryIncomeType}>
+                        </lightning-output-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={primaryIncomeType}>
+                        </lightning-input-field>
+                    </template>
+
+                    <!-- Field: Yearly Standard Gross Pay -->
+                    <template lwc:if={viewMode}>
+                        <lightning-input-field
+                            field-name={yearlyStandardGrossPay}
+                            read-only>
+                        </lightning-input-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={yearlyStandardGrossPay}>
+                        </lightning-input-field>
+                    </template>
+
+                    <!-- Field: Commissions Earned -->
+                    <template lwc:if={viewMode}>
+                        <lightning-input-field
+                            field-name={commissionsEarned}
+                            read-only>
+                        </lightning-input-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={commissionsEarned}>
+                        </lightning-input-field>
+                    </template>
+                    
+                    <!-- Field: Tips Earned -->
+                    <template lwc:if={viewMode}>
+                        <lightning-input-field
+                            field-name={tipsEarned}
+                            read-only>
+                        </lightning-input-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={tipsEarned}>
+                        </lightning-input-field>
+                    </template>
+                </div>
+                <div class="slds-col slds-size_2-of-12"></div>
+                <div class="slds-col slds-size_5-of-12">
+
+                    <!-- Field: Latest Credit Score -->
+                    <template lwc:if={viewMode}>
+                        <lightning-input-field
+                            field-name={latestCreditScore}
+                            read-only>
+                        </lightning-input-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={latestCreditScore}>
+                        </lightning-input-field>
+                    </template>
+
+                    <!-- Field: Bonuses Earned -->
+                    <template lwc:if={viewMode}>
+                        <lightning-input-field
+                            field-name={bonusesEarned}
+                            read-only>
+                        </lightning-input-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={bonusesEarned>
+                        </lightning-input-field>
+                    </template>
+
+                    <!-- Field: Interest And Dividends Earned -->
+                    <template lwc:if={viewMode}>
+                        <lightning-input-field
+                            field-name={interestAndDividendsEarned}
+                            read-only>
+                        </lightning-input-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={interestAndDividendsEarned}>
+                        </lightning-input-field>
+                    </template>
+
+                    <!-- Field: Net Income From Farming Or Business -->
+                    <template lwc:if={viewMode}>
+                        <lightning-input-field
+                            field-name={netIncomeFromFarmingOrBusiness}
+                            read-only>
+                        </lightning-input-field>
+                    </template>
+                    <template lwc:else>
+                        <lightning-input-field
+                            onchange={handleFieldChange}
+                            field-name={netIncomeFromFarmingOrBusiness}>
+                        </lightning-input-field>
+                    </template>
+                </div>
+            </div>
+
+            <template lwc:if={viewMode}>
+                <!-- Do not render buttons when in view mode. -->
+            </template>
+            <template lwc:else>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-12 slds-m-top_medium">
+                        <lightning-button
+                            variant="brand-outline"
+                            type="button"
+                            name="reset"
+                            label="Reset"
+                            onclick={handleReset}
+                            disabled={disableSubmitButton}
+                        ></lightning-button>
+                    </div>
+                    <div class="slds-col slds-size_1-of-12 slds-m-top_medium">
+                        <lightning-button
+                            variant="brand"
+                            type="submit"
+                            name="save"
+                            label="Save"
+                            disabled={disableSubmitButton}
+                        ></lightning-button>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-record-edit-form>
+</template>
