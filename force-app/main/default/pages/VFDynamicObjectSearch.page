@@ -1,0 +1,38 @@
+<apex:page controller="VFDynamicObjectSearchController" lightningStylesheets="true" >
+
+<!-- all interactive components must be in a form tag to work
+    buttons, drop downs, input fields, etc 
+    --> 
+    <apex:form >
+
+        <!-- user selects which object to search -->
+        <apex:pageBlock >
+            <!-- automatically set the selected option to the apex property -->
+            <apex:selectList value="{! selectedObject }" size="1"> 
+
+                <!-- dynamically set options in controller -->
+                <apex:selectOptions value="{! objectOptions}"/>
+
+                <apex:actionSupport event="onchange" action="{!fetchRecords}" reRender="blockTable" />
+
+            </apex:selectList>
+
+            <!-- <apex:commandButton action="{! fetchRecords}" value="Fetch Records"/> -->
+
+        </apex:pageBlock>
+
+        <!-- Display records of the selected object in the table -->
+        <apex:pageBlock >
+            <apex:pageBlockTable id="blockTable" value="{! records }" var="record">
+                <apex:column headerValue="ID">
+                    <apex:outputText value="{! record['Id']}"></apex:outputText>
+                </apex:column>
+
+                <apex:column headerValue="Name">
+                    <apex:outputText value="{! record['Name']}"></apex:outputText>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>
