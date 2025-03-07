@@ -1,0 +1,47 @@
+<template> 
+    <div class="claim-panel slds-tabs_card slds-theme_default">
+        <lightning-layout horizontal-align="spread">
+            <lightning-layout-item >
+                <div class="slds-text-align_center">Claim: {recordId}</div>
+            </lightning-layout-item>
+            <lightning-layout-item>
+                <div class="slds-builder-header__item"><c-new-Appeal-Button claimid={recordId}></c-new-Appeal-Button></div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+    <lightning-record-view-form object-api-name={objectName} record-id={recordId}>
+        <div class="component-standard slds-tabs_card slds-theme_default" >
+            <b>Claim Details</b>
+            <div class="slds-grid">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name={nameField}></lightning-output-field>
+                    <lightning-output-field field-name={claimantField}></lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name={typeField}></lightning-output-field>
+                    <lightning-output-field field-name={statusField}></lightning-output-field>
+                </div>
+            </div>
+            <b class="slds-p-top_medium">Current Health and Benefits</b>
+            <div class="slds-grid">
+                <div class="slds-col slds-size_2-of-3">
+                    <lightning-output-field field-name={currentDisabilityRatingField}></lightning-output-field>
+                    <lightning-output-field field-name={currentHealthStatusField}></lightning-output-field>
+                </div>
+            </div>
+            <b class="slds-p-top_medium">Service-Related Illness or Injury</b>
+            <div class="slds-grid">
+                <div class="slds-col slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name={dateIllnessDiagnosedField}></lightning-output-field>
+                    <lightning-output-field field-name={dateInjuryOccurredField}></lightning-output-field>
+                    <lightning-output-field field-name={dateOfOnsetField}></lightning-output-field>
+                </div>
+                <div class="slds-col slds-col slds-size_1-of-2">
+                    <lightning-output-field label="Description" field-name={descriptionOfIllnessOrInjuryField}></lightning-output-field>
+                    <lightning-output-field field-name={locationInjuryOccurredField}></lightning-output-field>
+                    <lightning-output-field field-name={injuryHistoryField}></lightning-output-field>
+                </div>
+            </div>
+        </div>
+    </lightning-record-view-form>
+  </template>

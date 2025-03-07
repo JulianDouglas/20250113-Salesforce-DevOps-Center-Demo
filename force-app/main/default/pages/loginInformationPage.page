@@ -1,0 +1,45 @@
+<apex:page controller="ClaimsSummaryController" lightningStylesheets="true">
+    <h1>Welcome to the VA Claims Portal</h1>
+    <p>This site helps claimants access their claims, make new ones, appeal decisions, and review the status of their appeals. Our goal is to provide a seamless experience for all veterans and ensure they receive the support they deserve.</p>
+    <p><strong>About Us:</strong> We are dedicated to providing the best service for veterans and claimants.</p>
+    <p><strong>Contact Us:</strong> You can reach us at support@vacommunity.com</p>
+
+    <apex:pageBlock >
+        <apex:outputPanel >
+            <h3>Claims Summary</h3>
+        </apex:outputPanel>
+        <apex:outputPanel >
+            <p><strong>Total Claims:</strong> {!totalClaims}</p>
+        </apex:outputPanel>
+
+        <apex:outputPanel >
+            <p><strong>Total Claimants:</strong> {!totalClaimants}</p>
+        </apex:outputPanel>
+    </apex:pageBlock>
+
+    <apex:pageBlock title="Did You Know?">
+        <apex:pageBlockSection title="Fact 1" collapsible="true">
+            <p>The VA operates the largest integrated health care system in the United States, with over 1,200 health care facilities.</p>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Fact 2" collapsible="true">
+            <p>The VA serves more than 9 million enrolled Veterans each year.</p>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Fact 3" collapsible="true">
+            <p>VA researchers have won three Nobel Prizes for their groundbreaking medical advancements.</p>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Fact 4" collapsible="true">
+            <p>The VA provides education benefits through the GI Bill to help Veterans and their families pursue higher education.</p>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Fact 5" collapsible="true">
+            <p>In 2020, the VA processed over 1.4 million disability claims.</p>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+
+    <apex:pageBlock title="Videos">
+        <apex:outputPanel >
+            <h3><a href='https://www.youtube.com/@DeptVetAffairs/featured' target='_blank'>Official VA Youtube Account</a></h3>
+        </apex:outputPanel>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/gWTa2lW9Qc4?si=1qKFVbqpQUEKQJUD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </apex:pageBlock>
+    
+</apex:page>

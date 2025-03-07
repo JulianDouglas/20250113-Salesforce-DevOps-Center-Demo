@@ -1,0 +1,60 @@
+:host {
+    display: block;
+}
+
+/* Style the filter picklist section */
+.filter-section {
+    padding: 1rem;
+    text-align: left;
+}
+
+/* Style the individual tiles */
+.slds-tile {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Add hover effect for subtle color change */
+.slds-tile:hover {
+    background-color: #dddddd; /* Subtle light gray background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Elevate the shadow slightly */
+    transform: translateY(-2px); /* Optional: Slight upward movement */
+}
+
+/* Remove default link styling for tiles */
+.custom-tile-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+
+.custom-tile-link:hover .slds-tile {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Tile title alignment */
+.slds-tile__title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.slds-text-body_regular p {
+    margin: 0.5rem 0; /* Add spacing between text lines */
+}
+
+/* Adjust the width of the picklist */
+.custom-picklist {
+    max-width: 200px; /* Adjust to fit the longest option */
+    width: 100%;
+    display: inline-block;
+}
+
+:host {
+    --sds-c-card-color-background: whitesmoke;
+}

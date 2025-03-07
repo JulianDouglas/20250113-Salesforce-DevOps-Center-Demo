@@ -1,0 +1,39 @@
+<template>
+  <div class="custom-header slds-builder-header_container ">
+    <header class="slds-builder-header slds-m-bottom_large">
+      <div class="slds-builder-header__item">
+        <div class="slds-builder-header__item-label slds-media slds-media_center">
+          <div class="slds-media__figure">
+            <span class="slds-icon_container slds-icon-utility-builder slds-current-color">
+              <lightning-icon icon-name="utility:home" size="small"></lightning-icon>
+            </span>
+          </div>
+          <div class="slds-media__body slds-p-right_medium slds-current-color">
+            <a href="../claims" style="color: whitesmoke;">VA Claims Portal</a>
+          </div>
+        </div>
+      </div>
+      <div class="slds-builder-header__item">
+        <h1 class="slds-builder-header__item-label">
+          <span class="slds-truncate" title="Claims">
+            <a href="../claims/claim-tracker" style="color: whitesmoke;">View Claims</a>
+          </span>
+        </h1>
+      </div>
+      <!-- <div class="slds-builder-header__item slds-builder-header__utilities">
+      </div> -->
+      <div class="slds-builder-header__item slds-builder-header__utilities">
+        <div class="slds-builder-header__utilities-item " >
+          <span class="slds-has-flexi-truncate" title="NewClaim">
+            <c-new-Claim-Button class="slds-builder-header__item-action"></c-new-Claim-Button>
+          </span>
+        </div>
+        <div class="slds-builder-header__utilities-item" >
+          <a href="../claims/update-personal-information" class="slds-builder-header__item-action slds-media slds-media_center">
+            <lightning-icon icon-name="action:user" size="x-small"></lightning-icon>
+          </a>
+        </div>
+      </div>
+    </header>
+  </div>
+</template>

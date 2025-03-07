@@ -1,0 +1,10 @@
+<template>
+    <lightning-modal-header label="File New Claim"></lightning-modal-header>
+    <lightning-modal-body>
+            <lightning-flow class="lightning-flow-custom"
+                flow-api-name='Claimant_Creates_Claim_Screen_Flow'
+                flow-input-variables={inputVariables}
+                onstatuschange={handleStatusChange}>
+            </lightning-flow>
+    </lightning-modal-body>
+</template>

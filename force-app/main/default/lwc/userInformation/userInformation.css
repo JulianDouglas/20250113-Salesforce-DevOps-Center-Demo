@@ -1,0 +1,6 @@
+:host {
+    --sds-c-card-color-background: whitesmoke;
+    /* --sds-c-card-color-background: rgb(0, 95, 178) !important;
+    --sds-c-card-border: none !important;
+    --sds-c-card-color: whitesmoke !important; */
+}

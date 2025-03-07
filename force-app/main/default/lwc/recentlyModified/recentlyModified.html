@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Recently Modified">
+        <!-- Filter Picklist -->
+        <div class="filter-section">
+            <lightning-combobox
+                name="filterPicklist"
+                value={selectedFilter}
+                placeholder="Select Filter"
+                options={filterOptions}
+                onchange={handleFilterChange}
+                class="custom-picklist"
+            ></lightning-combobox>
+        </div>
+
+        <!-- Tile Layout -->
+        <template if:true={filteredRecords}>
+            <div class="slds-p-around_small slds-grid slds-wrap slds-gutters">
+                <template for:each={filteredRecords} for:item="record">
+                    <div 
+                        class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 custom-tile-col" 
+                        key={record.id}
+                    >
+                        <a href={record.detailsUrl} target="_self" class="slds-tile-link custom-tile-link">
+                            <article class="slds-tile slds-tile_board slds-p-around_small custom-tile {record.tileClass}">
+                                <h3 class="slds-tile__title slds-text-heading_small slds-m-bottom_small">{record.name}</h3>
+                                <div class="slds-tile__detail slds-text-body_regular">
+                                    <p><strong>Status:</strong> {record.status}</p>
+                                    <p><strong>Type:</strong> {record.type}</p>
+                                    <p><strong>Last Modified:</strong> {record.formattedLastModified}</p>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <template if:true={error}>
+            <p class="slds-text-color_error">Error: {error.body.message}</p>
+        </template>
+    </lightning-card>
+</template>

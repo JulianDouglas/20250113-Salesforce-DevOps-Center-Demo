@@ -1,0 +1,9 @@
+.icon {
+    --slds-c-badge-icon-color-foreground: white;
+}
+
+.custom-header {
+    background-color: #032d60;
+    height: 50px;
+    border-color: #032d60 !important;
+}

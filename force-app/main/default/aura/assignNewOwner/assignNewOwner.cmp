@@ -1,0 +1,19 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="AutoAssignOldestRecord">
+    <aura:attribute name="feedbackText" type="String" default=" "/>
+    <aura:attribute name="vetButtonActivate" type="Boolean" default="false"/>
+    <aura:attribute name="civButtonActivate" type="Boolean" default="false"/>
+    <aura:attribute name="vetAppButtonActivate" type="Boolean" default="false"/>
+    <aura:attribute name="civAppButtonActivate" type="Boolean" default="false"/>
+    <lightning:card title="Start Working on Pending Claims Here">
+        <div class="slds-text-align_center slds-text-color_error slds-text-title_caps">{!v.feedbackText}</div>
+        <div class="slds-p-horizontal_small">
+            <lightning:button variant="brand" label="Veteran Claim" title="Brand action" onclick="{! c.handleVeteranClick}" disabled="{! v.vetButtonActivate}" />
+
+            <lightning:button variant="brand" label="Civilian Claim" title="Brand action" onclick="{! c.handleCivilianClick}" disabled="{! v.civButtonActivate}" />
+
+            <lightning:button variant="brand" label="Veteran Appeal" title="Brand action" onclick="{! c.handleVeteranAppealClick}" disabled="{! v.vetAppButtonActivate}" />
+
+            <lightning:button variant="brand" label="Civilian Appeal" title="Brand action" onclick="{! c.handleCivilianAppealClick}" disabled="{! v.civAppButtonActivate}" />
+        </div>
+    </lightning:card>
+</aura:component>

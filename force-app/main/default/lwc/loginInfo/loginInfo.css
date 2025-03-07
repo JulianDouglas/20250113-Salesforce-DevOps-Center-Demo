@@ -1,0 +1,7 @@
+:host {
+    --sds-c-card-color-background: whitesmoke;
+}
+.vfpage {
+    padding: 10px; 
+    box-sizing: border-box;
+}
